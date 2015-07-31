@@ -24,6 +24,9 @@ Last confirmed working version of iTunes: `12.2.1`.
     npm install
     npm run start
 
+iTunes API will run on port `8181` by default. Use the `PORT` environment
+variable to use your own port.
+
 ## Docs
 
 This is a quick overview of the service. Read [app.js](app.js) if you need more
