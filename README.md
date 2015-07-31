@@ -83,7 +83,7 @@ These are the endpoints you can hit to do things.
     PUT /previous => NowPlayingResource
     PUT /next => NowPlayingResource
     PUT /play => NowPlayingResource
-    PUT /play => NowPlayingResource
+    PUT /pause => NowPlayingResource
 
 #### Info
   Use these endpoints to query the current state of iTunes.
@@ -94,7 +94,7 @@ These are the endpoints you can hit to do things.
 #### Playlist Control
   Use this endpoint to start a specific playlist.
 
-    PUT /play_playlist?playlist="Party%20Time" => NowPlayingResource
+    POST /play_playlist?playlist="Party%20Time" => NowPlayingResource
 
 #### AirPlay Control
   Use these endpoints to query and set AirPlay devices. You can set multiple
