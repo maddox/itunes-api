@@ -41,11 +41,12 @@ and what is playing.
 ```json
 {
   "player_state": "playing",
-  "id": "896CD158E5AB7CEC",
-  "name": "Dreams",
-  "artist": "Beck",
-  "album": "Dreams - Single (2015)"
-}```
+  "id": "AC4FFD2271422B47",
+  "name": "Forever",
+  "artist": "HAIM",
+  "album": "Days Are Gone (2013)"
+}
+```
 
 #### AirPlayDevice Resource
 
