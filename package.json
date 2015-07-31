@@ -1,0 +1,23 @@
+{
+  "name": "itunes-api",
+  "version": "1.0.0",
+  "description": "itunes-api",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maddox/itunes-api"
+  },
+  "author": "Jon Maddox <jon@jonmaddox.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/maddox/itunes-api/issues"
+  },
+  "dependencies": {
+    "express": "^4.12.4",
+    "body-parser": "^1.12.4",
+    "local-itunes": "^0.3.0",
+    "osa": "2.2.0"
+  }
+}
