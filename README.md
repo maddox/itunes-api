@@ -4,7 +4,8 @@ iTunes API is a simple REST server allowing you to query/control a local running
 iTunes instance. Once you have a way to make RESTful API calls to control iTunes,
 you can integrate its control into any of your own software.
 
-This is especially convenient for integrating into any sort of Home Automationyou might have.
+This is especially convenient for integrating into any sort of Home Automation
+you might have.
 
 Last confirmed working version of iTunes: `12.2.1`.
 
