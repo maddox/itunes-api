@@ -18,13 +18,16 @@ function getCurrentState(){
   currentState = {};
 
   currentState['player_state'] = playerState;
-  currentState['id'] = currentTrack.persistentID();
-  currentState['name'] = currentTrack.name();
-  currentState['artist'] = currentTrack.artist();
-  currentState['album'] = currentTrack.album();
 
-  if (currentTrack.year()) {
-    currentState['album'] += " (" + currentTrack.year() + ")";
+  if (playerState != "stopped") {
+    currentState['id'] = currentTrack.persistentID();
+    currentState['name'] = currentTrack.name();
+    currentState['artist'] = currentTrack.artist();
+    currentState['album'] = currentTrack.album();
+
+    if (currentTrack.year()) {
+      currentState['album'] += " (" + currentTrack.year() + ")";
+    }
   }
 
   return currentState;
