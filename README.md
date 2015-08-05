@@ -59,7 +59,7 @@ AirPlay device on your network.
 
 ```json
 {
-  "id": 63-22-fa-1f-f5-d4,
+  "id": "63-22-fa-1f-f5-d4",
   "name": "Living Room",
   "kind": "Apple TV",
   "active": true,
