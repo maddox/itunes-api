@@ -22,11 +22,20 @@ Last confirmed working version of iTunes: `12.2.1`.
 
 ## Setup
 
-    npm install
-    npm run start
+    script/bootstrap
+    script/server
 
 iTunes API will run on port `8181` by default. Use the `PORT` environment
 variable to use your own port.
+
+## Logging
+
+iTunes API logs all of its requests. In `production`, it logs to a file at `log/production.log`.
+In development mode, it just logs to stdout.
+
+## Development
+
+Launch the app via `npm run start` to run it in the development environment.
 
 ## Docs
 
