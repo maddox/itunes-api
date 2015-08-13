@@ -1,6 +1,6 @@
 {
   "name": "itunes-api",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "itunes-api",
   "scripts": {
     "start": "node app.js"
