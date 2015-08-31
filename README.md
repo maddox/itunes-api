@@ -23,19 +23,34 @@ Last confirmed working version of iTunes: `12.2.1`.
 ## Setup
 
     script/bootstrap
-    script/server
 
-iTunes API will run on port `8181` by default. Use the `PORT` environment
+## Running It
+Get up and running immediatly with `script/server`.
+
+iTunes API will run on port `8282` by default. Use the `PORT` environment
 variable to use your own port.
+
+### Forever
+iTunes API has support for [Forever](https://github.com/foreverjs/forever). It uses
+`launchd` on OS X to kick it off so that it starts on boot. There is no `init.d`
+other Linux support of this type. Pull requests would be welcome for this though.
+
+### Development
+You can simply run it by calling `script/server`. This will run it in development
+mode with logging to standard out.
+
+### Install as Service on OS X
+
+    script/install
 
 ## Logging
 
-iTunes API logs all of its requests. In `production`, it logs to a file at `log/production.log`.
-In development mode, it just logs to stdout.
+iTunes API logs all of its requests. In `production`, it logs to a file at `log/logs.log`.
+In `development` mode, it just logs to stdout.
 
 ## Development
 
-Launch the app via `npm run start` to run it in the development environment.
+Launch the app via `script/server` to run it in the development environment.
 
 ## Docs
 
