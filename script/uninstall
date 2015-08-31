@@ -1,0 +1,6 @@
+#!/bin/sh
+
+echo "Uninstalling itunes-api..."
+forever stop itunes-api > /dev/null 2>&1
+launchctl unload ~/Library/LaunchAgents/org.itunes-api.plist
+rm ~/Library/LaunchAgents/org.itunes-api.plist

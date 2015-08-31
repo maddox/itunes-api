@@ -1,0 +1,7 @@
+{
+  "uid": "itunes-api",
+  "append": true,
+  "script": "app.js",
+  "outFile": "log/logs.log",
+  "errFile": "log/error.log"
+}

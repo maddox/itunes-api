@@ -1,0 +1,15 @@
+#!/bin/sh
+
+set -e
+
+echo "Installing itunes-api..."
+
+APP_PATH=`pwd`
+USER_NAME=`whoami`
+
+cp config/org.itunes-api.plist ~/Library/LaunchAgents/org.itunes-api.plist
+
+sed -i '' -e "s#%USER%#$USER_NAME#g" ~/Library/LaunchAgents/org.itunes-api.plist
+sed -i '' -e "s#%PATH%#$APP_PATH#g" ~/Library/LaunchAgents/org.itunes-api.plist
+
+launchctl load -w -F ~/Library/LaunchAgents/org.itunes-api.plist
