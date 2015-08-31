@@ -9,20 +9,11 @@ var osa = require('osa')
 var osascript = require(path.join(__dirname, 'node_modules', 'local-itunes', 'node_modules', 'osascript'))
 var airplay = require('./lib/airplay')
 
-var env = process.env.NODE_ENV || 'development';
-var logDirectory = __dirname + '/log'
-
 var app = express()
 app.use(bodyParser.urlencoded({ extended: false }))
 
 var logFormat = "'[:date[iso]] - :remote-addr - :method :url :status :response-time ms - :res[content-length]b'"
-if ('development' == env){
-  app.use(morgan(logFormat))
-}else if ('production' == env){
-  fs.existsSync(logDirectory) || fs.mkdirSync(logDirectory)
-  var accessLogStream = fs.createWriteStream(logDirectory + '/' + env + '.log', {flags: 'a'})
-  app.use(morgan(logFormat, {stream: accessLogStream}))
-}
+app.use(morgan(logFormat))
 
 function getCurrentState(){
   itunes = Application('iTunes');
