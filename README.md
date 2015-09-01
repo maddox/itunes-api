@@ -141,7 +141,7 @@ These are the endpoints you can hit to do things.
   Use these endpoints to query and set AirPlay devices. You can set multiple
   AirPlay devices to be used at the same time.
 
-    GET /airplay_devices => {:airplay_devices => [AirPlayDevice, AirPlayDevice, ...]}
+    GET /airplay_devices => {"airplay_devices": [AirPlayDevice, AirPlayDevice, ...]}
     PUT /airplay_devices/:id/on => AirPlayDevice
     PUT /airplay_devices/:id/off => AirPlayDevice
 
