@@ -53,9 +53,15 @@ function sendResponse(error, res){
   }
 }
 
-function playPlaylist(name){
+function playPlaylist(nameOrId){
   itunes = Application('iTunes');
-  itunes.playlists.byName(name).play();
+
+  if ((nameOrId - 0) == nameOrId && ('' + nameOrId).trim().length > 0) {
+    id = parseInt(nameOrId);
+    itunes.playlists.byId(id).play();
+  }else{
+    itunes.playlists.byName(nameOrId).play();
+  }
 
   return true;
 }
