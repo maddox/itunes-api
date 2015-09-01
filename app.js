@@ -60,6 +60,20 @@ function playPlaylist(name){
   return true;
 }
 
+function getPlaylists(){
+  itunes = Application('iTunes');
+  playlists = itunes.playlists();
+
+  playlistNames = [];
+
+  for (var i = 0; i < playlists.length; i++) {
+    playlist = playlists[i];
+    playlistNames.push({id: playlist.id(), name: playlist.name()});
+  }
+
+  return playlistNames;
+}
+
 app.put('/play', function(req, res){
   iTunes.play(function (error){
     sendResponse(error, res)
