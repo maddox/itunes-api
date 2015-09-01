@@ -122,6 +122,17 @@ app.get('/artwork', function(req, res){
   })
 })
 
+app.get('/playlists', function (req, res) {
+  osa(getPlaylists, function (error, data) {
+    if (error){
+      console.log(error)
+      res.sendStatus(500)
+    }else{
+      res.json({playlists: data})
+    }
+  })
+})
+
 app.post('/play_playlist', function (req, res) {
   osa(playPlaylist, req.body.playlist, function (error, data) {
     sendResponse(error, res)
