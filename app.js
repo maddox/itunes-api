@@ -17,17 +17,20 @@ app.use(morgan(logFormat))
 
 function getCurrentState(){
   itunes = Application('iTunes');
-  currentTrack = itunes.currentTrack;
   playerState = itunes.playerState();
   currentState = {};
 
   currentState['player_state'] = playerState;
 
   if (playerState != "stopped") {
+    currentTrack = itunes.currentTrack;
+    currentPlaylist = itunes.currentPlaylist;
+
     currentState['id'] = currentTrack.persistentID();
     currentState['name'] = currentTrack.name();
     currentState['artist'] = currentTrack.artist();
     currentState['album'] = currentTrack.album();
+    currentState['playlist'] = currentPlaylist.name();
 
     if (currentTrack.year()) {
       currentState['album'] += " (" + currentTrack.year() + ")";
@@ -53,11 +56,38 @@ function sendResponse(error, res){
   }
 }
 
-function playPlaylist(name){
+function playPlaylist(nameOrId){
   itunes = Application('iTunes');
-  itunes.playlists.byName(name).play();
+
+  if ((nameOrId - 0) == nameOrId && ('' + nameOrId).trim().length > 0) {
+    id = parseInt(nameOrId);
+    itunes.playlists.byId(id).play();
+  }else{
+    itunes.playlists.byName(nameOrId).play();
+  }
 
   return true;
+}
+
+function getPlaylists(){
+  itunes = Application('iTunes');
+  playlists = itunes.playlists();
+
+  playlistNames = [];
+
+  for (var i = 0; i < playlists.length; i++) {
+    playlist = playlists[i];
+
+    data = {};
+    data['id'] = playlist.id();
+    data['name'] = playlist.name();
+    data['loved'] = playlist.loved();
+    data['duration_in_seconds'] = playlist.duration();
+    data['time'] = playlist.time();
+    playlistNames.push(data);
+  }
+
+  return playlistNames;
 }
 
 app.put('/play', function(req, res){
@@ -105,6 +135,23 @@ app.get('/artwork', function(req, res){
   osascript.file(path.join(__dirname, 'lib', 'art.applescript'), function (error, data) {
     res.type('image/jpeg')
     res.sendFile('/tmp/currently-playing.jpg')
+  })
+})
+
+app.get('/playlists', function (req, res) {
+  osa(getPlaylists, function (error, data) {
+    if (error){
+      console.log(error)
+      res.sendStatus(500)
+    }else{
+      res.json({playlists: data})
+    }
+  })
+})
+
+app.put('/playlists/:id/play', function (req, res) {
+  osa(playPlaylist, req.params.id, function (error, data) {
+    sendResponse(error, res)
   })
 })
 
