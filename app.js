@@ -17,13 +17,13 @@ app.use(morgan(logFormat))
 
 function getCurrentState(){
   itunes = Application('iTunes');
-  currentTrack = itunes.currentTrack;
   playerState = itunes.playerState();
   currentState = {};
 
   currentState['player_state'] = playerState;
 
   if (playerState != "stopped") {
+    currentTrack = itunes.currentTrack;
     currentState['id'] = currentTrack.persistentID();
     currentState['name'] = currentTrack.name();
     currentState['artist'] = currentTrack.artist();
