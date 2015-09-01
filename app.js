@@ -74,7 +74,14 @@ function getPlaylists(){
 
   for (var i = 0; i < playlists.length; i++) {
     playlist = playlists[i];
-    playlistNames.push({id: playlist.id(), name: playlist.name()});
+
+    data = {};
+    data['id'] = playlist.id();
+    data['name'] = playlist.name();
+    data['loved'] = playlist.loved();
+    data['duration_in_seconds'] = playlist.duration();
+    data['time'] = playlist.time();
+    playlistNames.push(data);
   }
 
   return playlistNames;
