@@ -24,10 +24,13 @@ function getCurrentState(){
 
   if (playerState != "stopped") {
     currentTrack = itunes.currentTrack;
+    currentPlaylist = itunes.currentPlaylist;
+
     currentState['id'] = currentTrack.persistentID();
     currentState['name'] = currentTrack.name();
     currentState['artist'] = currentTrack.artist();
     currentState['album'] = currentTrack.album();
+    currentState['playlist'] = currentPlaylist.name();
 
     if (currentTrack.year()) {
       currentState['album'] += " (" + currentTrack.year() + ")";
