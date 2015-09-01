@@ -72,8 +72,23 @@ and what is playing.
   "id": "AC4FFD2271422B47",
   "name": "Forever",
   "artist": "HAIM",
-  "album": "Days Are Gone (2013)"
+  "album": "Days Are Gone (2013)",
+  "playlist": "Summer Jams"
 }
+```
+
+#### Playlist Resource
+
+The Playlist resource returns all the information about a playlist in your library.
+
+```json
+{
+  "id": 88592,
+  "name": "Outkast: The '90s",
+  "loved": true,
+  "duration_in_seconds": 4544,
+  "time": "1:15:44"
+},
 ```
 
 #### AirPlayDevice Resource
@@ -115,10 +130,12 @@ These are the endpoints you can hit to do things.
     GET /now_playing => NowPlayingResource
     GET /artwork => JPEG Data (image/jpeg)
 
-#### Playlist Control
+#### Playlists
   Use this endpoint to start a specific playlist.
 
-    POST /play_playlist?playlist="Party%20Time" => NowPlayingResource
+    GET /playlists => {"playlists": [PlaylistResource, PlaylistResource, ...]}
+    PUT /playlists/:id/play => NowPlayingResource
+    (DEPRECATED) POST /play_playlist?playlist="Party%20Time" => NowPlayingResource
 
 #### AirPlay Control
   Use these endpoints to query and set AirPlay devices. You can set multiple
