@@ -139,6 +139,12 @@ app.get('/playlists', function (req, res) {
   })
 })
 
+app.put('/playlists/:id/play', function (req, res) {
+  osa(playPlaylist, req.params.id, function (error, data) {
+    sendResponse(error, res)
+  })
+})
+
 app.post('/play_playlist', function (req, res) {
   osa(playPlaylist, req.body.playlist, function (error, data) {
     sendResponse(error, res)
