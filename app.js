@@ -11,6 +11,7 @@ var airplay = require('./lib/airplay')
 
 var app = express()
 app.use(bodyParser.urlencoded({ extended: false }))
+app.use(express.static(path.join(__dirname, 'public')));
 
 var logFormat = "'[:date[iso]] - :remote-addr - :method :url :status :response-time ms - :res[content-length]b'"
 app.use(morgan(logFormat))
@@ -89,6 +90,10 @@ function getPlaylists(){
 
   return playlistNames;
 }
+
+app.get('/', function(req, res){
+  res.sendfile('index.html');
+})
 
 app.put('/play', function(req, res){
   iTunes.play(function (error){
