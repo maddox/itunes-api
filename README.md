@@ -114,6 +114,12 @@ AirPlay device on your network.
 
 These are the endpoints you can hit to do things.
 
+#### Info
+  Use these endpoints to query the current state of iTunes.
+
+    GET /now_playing => NowPlayingResource
+    GET /artwork => JPEG Data (image/jpeg)
+
 #### Player Control
   Use these endpoints to control what's currently playing.
 
@@ -123,12 +129,6 @@ These are the endpoints you can hit to do things.
     PUT /next => NowPlayingResource
     PUT /play => NowPlayingResource
     PUT /pause => NowPlayingResource
-
-#### Info
-  Use these endpoints to query the current state of iTunes.
-
-    GET /now_playing => NowPlayingResource
-    GET /artwork => JPEG Data (image/jpeg)
 
 #### Playlists
   Use this endpoint to start a specific playlist.
