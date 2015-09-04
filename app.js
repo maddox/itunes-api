@@ -173,8 +173,21 @@ app.get('/playlists', function (req, res) {
 })
 
 app.put('/playlists/:id/play', function (req, res) {
-  osa(playPlaylist, req.params.id, function (error, data) {
-    sendResponse(error, res)
+  osa(getPlaylistsFromItunes, function (error, data) {
+    if (error){
+      res.sendStatus(500)
+    }else{
+      for (var i = 0; i < data.length; i++) {
+        playlist = data[i]
+        if (req.params.id == parameterize(playlist['name'])) {
+          osa(playPlaylist, playlist['id'], function (error, data) {
+            sendResponse(error, res)
+          })
+          return
+        }
+      }
+      res.sendStatus(404)
+    }
   })
 })
 
