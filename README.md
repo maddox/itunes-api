@@ -83,7 +83,7 @@ The Playlist resource returns all the information about a playlist in your libra
 
 ```json
 {
-  "id": 88592,
+  "id": 'outkast-the-90s',
   "name": "Outkast: The '90s",
   "loved": true,
   "duration_in_seconds": 4544,
