@@ -135,7 +135,6 @@ These are the endpoints you can hit to do things.
 
     GET /playlists => {"playlists": [PlaylistResource, PlaylistResource, ...]}
     PUT /playlists/:id/play => NowPlayingResource
-    (DEPRECATED) POST /play_playlist?playlist="Party%20Time" => NowPlayingResource
 
 #### AirPlay Control
   Use these endpoints to query and set AirPlay devices. You can set multiple
