@@ -8,6 +8,7 @@ var iTunes = require('local-itunes')
 var osa = require('osa')
 var osascript = require(path.join(__dirname, 'node_modules', 'local-itunes', 'node_modules', 'osascript'))
 var airplay = require('./lib/airplay')
+var parameterize = require('parameterize');
 
 var app = express()
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -70,7 +71,7 @@ function playPlaylist(nameOrId){
   return true;
 }
 
-function getPlaylists(){
+function getPlaylistsFromItunes(){
   itunes = Application('iTunes');
   playlists = itunes.playlists();
 
@@ -89,6 +90,19 @@ function getPlaylists(){
   }
 
   return playlistNames;
+}
+
+function getPlaylists(callback){
+  osa(getPlaylistsFromItunes, function (error, data) {
+    if (error){
+      callback(error)
+    }else{
+      for (var i = 0; i < data.length; i++) {
+        data[i]['id'] = parameterize(data[i]['name'])
+      }
+      callback(null, data)
+    }
+  })
 }
 
 app.get('/_ping', function(req, res){
@@ -148,7 +162,7 @@ app.get('/artwork', function(req, res){
 })
 
 app.get('/playlists', function (req, res) {
-  osa(getPlaylists, function (error, data) {
+  getPlaylists(function (error, data) {
     if (error){
       console.log(error)
       res.sendStatus(500)
