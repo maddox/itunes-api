@@ -1,6 +1,6 @@
 {
   "name": "itunes-api",
-  "version": "1.2.1",
+  "version": "1.3.0",
   "description": "itunes-api",
   "scripts": {
     "start": "node app.js"
@@ -19,6 +19,7 @@
     "morgan": "^1.6.1",
     "body-parser": "^1.12.4",
     "local-itunes": "^0.3.0",
-    "osa": "2.2.0"
+    "osa": "2.2.0",
+    "parameterize": "^0.0.7"
   }
 }
