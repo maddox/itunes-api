@@ -189,12 +189,7 @@ app.put('/playlists/:id/play', function (req, res) {
       res.sendStatus(404)
     }
   })
-})
 
-app.post('/play_playlist', function (req, res) {
-  osa(playPlaylist, req.body.playlist, function (error, data) {
-    sendResponse(error, res)
-  })
 })
 
 app.get('/airplay_devices', function(req, res){
