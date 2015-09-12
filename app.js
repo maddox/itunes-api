@@ -160,6 +160,19 @@ app.put('/next', function(req, res){
   })
 })
 
+app.put('/volume', function(req, res){
+  osa(setVolume, req.body.level, function(error, data, log){
+    if (error){
+      console.log(error)
+      res.sendStatus(500)
+    }else{
+      sendResponse(error, res)
+    }
+  })
+})
+
+
+
 app.get('/now_playing', function(req, res){
   error = null
   sendResponse(error, res)
