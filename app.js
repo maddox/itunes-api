@@ -33,6 +33,7 @@ function getCurrentState(){
     currentState['artist'] = currentTrack.artist();
     currentState['album'] = currentTrack.album();
     currentState['playlist'] = currentPlaylist.name();
+    currentState['volume'] = itunes.soundVolume();
 
     if (currentTrack.year()) {
       currentState['album'] += " (" + currentTrack.year() + ")";
@@ -66,6 +67,16 @@ function playPlaylist(nameOrId){
     itunes.playlists.byId(id).play();
   }else{
     itunes.playlists.byName(nameOrId).play();
+  }
+
+  return true;
+}
+
+function setVolume(level){
+  itunes = Application('iTunes');
+
+  if (level) {
+    itunes.soundVolume = parseInt(level);
   }
 
   return true;
@@ -148,6 +159,19 @@ app.put('/next', function(req, res){
     sendResponse(error, res)
   })
 })
+
+app.put('/volume', function(req, res){
+  osa(setVolume, req.body.level, function(error, data, log){
+    if (error){
+      console.log(error)
+      res.sendStatus(500)
+    }else{
+      sendResponse(error, res)
+    }
+  })
+})
+
+
 
 app.get('/now_playing', function(req, res){
   error = null
