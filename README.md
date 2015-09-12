@@ -146,6 +146,7 @@ These are the endpoints you can hit to do things.
   AirPlay devices to be used at the same time.
 
     GET /airplay_devices => {"airplay_devices": [AirPlayDevice, AirPlayDevice, ...]}
+    GET /airplay_devices/:id => AirPlayDevice
     PUT /airplay_devices/:id/on => AirPlayDevice
     PUT /airplay_devices/:id/off => AirPlayDevice
     PUT /volume [level=20] => AirPlayDevice
