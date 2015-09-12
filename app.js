@@ -79,8 +79,18 @@ function setVolume(level){
   if (level) {
     itunes.soundVolume = parseInt(level);
   }
+}
 
   return true;
+function setMuted(muted){
+  itunes = Application('iTunes');
+
+  if (muted) {
+    itunes.mute = muted;
+    return true;
+  }else{
+    return false;
+  }
 }
 
 function getPlaylistsFromItunes(){
@@ -172,6 +182,16 @@ app.put('/volume', function(req, res){
   })
 })
 
+app.put('/mute', function(req, res){
+  osa(setMuted, req.body.muted, function(error, data, log){
+    if (error){
+      console.log(error)
+      res.sendStatus(500)
+    }else{
+      sendResponse(error, res)
+    }
+  })
+})
 
 
 app.get('/now_playing', function(req, res){
