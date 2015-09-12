@@ -78,10 +78,12 @@ function setVolume(level){
 
   if (level) {
     itunes.soundVolume = parseInt(level);
+    return true;
+  }else {
+    return false;
   }
 }
 
-  return true;
 function setMuted(muted){
   itunes = Application('iTunes');
 
