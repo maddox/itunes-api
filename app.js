@@ -33,6 +33,7 @@ function getCurrentState(){
     currentState['artist'] = currentTrack.artist();
     currentState['album'] = currentTrack.album();
     currentState['playlist'] = currentPlaylist.name();
+    currentState['volume'] = itunes.soundVolume();
 
     if (currentTrack.year()) {
       currentState['album'] += " (" + currentTrack.year() + ")";
