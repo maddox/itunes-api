@@ -50,8 +50,8 @@ function sendResponse(error, res){
     res.sendStatus(500)
   }else{
     osa(getCurrentState, function (error, state) {
-      console.log(error)
       if (error) {
+        console.log(error)
         res.sendStatus(500)
       }else{
         res.json(state)
