@@ -72,6 +72,16 @@ function playPlaylist(nameOrId){
   return true;
 }
 
+function setVolume(level){
+  itunes = Application('iTunes');
+
+  if (level) {
+    itunes.soundVolume = parseInt(level);
+  }
+
+  return true;
+}
+
 function getPlaylistsFromItunes(){
   itunes = Application('iTunes');
   playlists = itunes.playlists();
