@@ -105,10 +105,10 @@ AirPlay device on your network.
   "kind": "Apple TV",
   "active": true,
   "selected": true,
-  "soundVolume": 60,
-  "supportsVideo": true,
-  "supportsAudio": true,
-  "networkAddress": "63:22:fa:1f:f5:d4"
+  "volume": 60,
+  "supports_video": true,
+  "supports_audio": true,
+  "network_address": "63:22:fa:1f:f5:d4"
 }
 ```
 
