@@ -105,10 +105,10 @@ AirPlay device on your network.
   "kind": "Apple TV",
   "active": true,
   "selected": true,
-  "soundVolume": 60,
-  "supportsVideo": true,
-  "supportsAudio": true,
-  "networkAddress": "63:22:fa:1f:f5:d4"
+  "volume": 60,
+  "supports_video": true,
+  "supports_audio": true,
+  "network_address": "63:22:fa:1f:f5:d4"
 }
 ```
 
@@ -148,6 +148,7 @@ These are the endpoints you can hit to do things.
     GET /airplay_devices => {"airplay_devices": [AirPlayDevice, AirPlayDevice, ...]}
     PUT /airplay_devices/:id/on => AirPlayDevice
     PUT /airplay_devices/:id/off => AirPlayDevice
+    PUT /volume [level=20] => AirPlayDevice
 
 ## Contributions
 

@@ -271,5 +271,15 @@ app.put('/airplay_devices/:id/off', function (req, res) {
   })
 })
 
+app.put('/airplay_devices/:id/volume', function (req, res) {
+  osa(airplay.setVolumeAirPlayDevice, req.params.id, req.body.level, function(error, data, log){
+    if (error){
+      console.log(error)
+      res.sendStatus(500)
+    }else{
+      res.json(data)
+    }
+  })
+})
 
 app.listen(process.env.PORT || 8181);
