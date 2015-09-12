@@ -69,6 +69,7 @@ and what is playing.
 ```json
 {
   "player_state": "playing",
+  "volume": 60,
   "id": "AC4FFD2271422B47",
   "name": "Forever",
   "artist": "HAIM",
@@ -83,7 +84,7 @@ The Playlist resource returns all the information about a playlist in your libra
 
 ```json
 {
-  "id": 'outkast-the-90s',
+  "id": "outkast-the-90s",
   "name": "Outkast: The '90s",
   "loved": true,
   "duration_in_seconds": 4544,
@@ -129,6 +130,8 @@ These are the endpoints you can hit to do things.
     PUT /next => NowPlayingResource
     PUT /play => NowPlayingResource
     PUT /pause => NowPlayingResource
+    PUT /volume [level=20] => NowPlayingResource
+
 
 #### Playlists
   Use this endpoint to start a specific playlist.
