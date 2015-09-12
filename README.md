@@ -70,6 +70,7 @@ and what is playing.
 {
   "player_state": "playing",
   "volume": 60,
+  "muted": false,
   "id": "AC4FFD2271422B47",
   "name": "Forever",
   "artist": "HAIM",
@@ -131,6 +132,7 @@ These are the endpoints you can hit to do things.
     PUT /play => NowPlayingResource
     PUT /pause => NowPlayingResource
     PUT /volume [level=20] => NowPlayingResource
+    PUT /volume [muted=true] => NowPlayingResource
 
 
 #### Playlists
