@@ -249,6 +249,23 @@ app.get('/airplay_devices', function(req, res){
   })
 })
 
+app.get('/airplay_devices/:id', function(req, res){
+  osa(airplay.listAirPlayDevices, function(error, data, log){
+    if (error){
+      res.sendStatus(500)
+    }else{
+      for (var i = 0; i < data.length; i++) {
+        device = data[i]
+        if (req.params.id == device['id']) {
+          res.json(device)
+          return
+        }
+      }
+      res.sendStatus(404)
+    }
+  })
+})
+
 app.put('/airplay_devices/:id/on', function (req, res) {
   osa(airplay.setSelectionStateAirPlayDevice, req.params.id, true, function(error, data, log){
     if (error){
