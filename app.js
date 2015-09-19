@@ -19,6 +19,8 @@ var logFormat = "'[:date[iso]] - :remote-addr - :method :url :status :response-t
 app.use(morgan(logFormat))
 
 var mqttClient = mqtt.connect('mqtt://192.168.1.16');
+var TOPIC_NAMESPACE = "itunes-api"
+
 function getCurrentState(){
   itunes = Application('iTunes');
   playerState = itunes.playerState();
