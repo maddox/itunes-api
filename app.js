@@ -148,12 +148,14 @@ app.get('/', function(req, res){
 
 app.put('/play', function(req, res){
   iTunes.play(function (error){
+    if (!error) publish('state', 'playing', {retain: true});
     sendResponse(error, res)
   })
 })
 
 app.put('/pause', function(req, res){
   iTunes.pause(function (error){
+    if (!error) publish('state', 'paused', {retain: true});
     sendResponse(error, res)
   })
 })
@@ -166,6 +168,7 @@ app.put('/playpause', function(req, res){
 
 app.put('/stop', function(req, res){
   iTunes.stop(function (error){
+    if (!error) publish('state', 'stopped', {retain: true});
     sendResponse(error, res)
   })
 })
