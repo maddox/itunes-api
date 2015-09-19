@@ -1,6 +1,7 @@
 var fs = require('fs')
 var path = require('path')
 var util = require('util')
+var mqtt = require('mqtt');
 var express = require('express')
 var morgan = require('morgan')
 var bodyParser = require('body-parser')
@@ -17,6 +18,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 var logFormat = "'[:date[iso]] - :remote-addr - :method :url :status :response-time ms - :res[content-length]b'"
 app.use(morgan(logFormat))
 
+var mqttClient = mqtt.connect('mqtt://192.168.1.16');
 function getCurrentState(){
   itunes = Application('iTunes');
   playerState = itunes.playerState();
