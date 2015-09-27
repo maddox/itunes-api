@@ -11,6 +11,8 @@ var osascript = require(path.join(__dirname, 'node_modules', 'local-itunes', 'no
 var airplay = require('./lib/airplay')
 var parameterize = require('parameterize');
 
+var config = require('./config/config.json');
+
 var app = express()
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(express.static(path.join(__dirname, 'public')));
@@ -18,7 +20,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 var logFormat = "'[:date[iso]] - :remote-addr - :method :url :status :response-time ms - :res[content-length]b'"
 app.use(morgan(logFormat))
 
-var mqttClient = mqtt.connect('mqtt://192.168.1.16');
+var mqttClient = mqtt.connect(config.mqtt_host);
 var TOPIC_NAMESPACE = "itunes-api"
 
 function getCurrentState(){
