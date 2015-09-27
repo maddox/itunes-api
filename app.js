@@ -20,7 +20,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 var logFormat = "'[:date[iso]] - :remote-addr - :method :url :status :response-time ms - :res[content-length]b'"
 app.use(morgan(logFormat))
 
-var mqttClient = mqtt.connect(config.mqtt_host);
+var mqttClient = mqtt.connect(config.mqtt);
 var TOPIC_NAMESPACE = "itunes-api"
 
 function getCurrentState(){
