@@ -7,6 +7,8 @@ echo "Installing itunes-api..."
 APP_PATH=`pwd`
 USER_NAME=`whoami`
 
+mkdir -p ~/Library/LaunchAgents
+
 cp config/org.itunes-api.plist ~/Library/LaunchAgents/org.itunes-api.plist
 
 sed -i '' -e "s#%USER%#$USER_NAME#g" ~/Library/LaunchAgents/org.itunes-api.plist
