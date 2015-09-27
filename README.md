@@ -52,7 +52,25 @@ In `development` mode, it just logs to stdout.
 
 Launch the app via `script/server` to run it in the development environment.
 
-## Docs
+## MQTT
+
+itunes-api can report its state changes to your MQTT broker. Just edit your
+config file in `config/config.json` to add your MQTT host.
+
+itunes-api publishes topics with the namespace of: `itunes-api`.
+
+### Topics
+
+* `itunes-api/state`, `playing`|`paused`|`stop` - This is published whenever the
+state is changed.
+* `itunes-api/volume`, `45` - This is published whenever the volume level is
+changed.
+* `itunes-api/airplay_devices/:airplay_device_id/state`, `on`|`off` - This is
+published whenever the state of an airplay device has changed.
+* `itunes-api/airplay_devices/:airplay_device_id/volume`, `45` - This is
+published whenever the volume level of an airplay device is changed.
+
+## API Docs
 
 This is a quick overview of the service. Read [app.js](app.js) if you need more
 info.
