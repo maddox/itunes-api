@@ -193,6 +193,7 @@ app.put('/volume', function(req, res){
       console.log(error)
       res.sendStatus(500)
     }else{
+      if (!error) publish('volume', req.body.level, {retain: true});
       sendResponse(error, res)
     }
   })
@@ -286,6 +287,7 @@ app.put('/airplay_devices/:id/on', function (req, res) {
       console.log(error)
       res.sendStatus(500)
     }else{
+      publish('airplay_devices/' + req.params.id + '/state', 'on', {retain: true});
       res.json(data)
     }
   })
@@ -297,6 +299,7 @@ app.put('/airplay_devices/:id/off', function (req, res) {
       console.log(error)
       res.sendStatus(500)
     }else{
+      publish('airplay_devices/' + req.params.id + '/state', 'off', {retain: true});
       res.json(data)
     }
   })
@@ -308,6 +311,7 @@ app.put('/airplay_devices/:id/volume', function (req, res) {
       console.log(error)
       res.sendStatus(500)
     }else{
+      publish('airplay_devices/' + req.params.id + '/volume', req.body.level, {retain: true});
       res.json(data)
     }
   })
