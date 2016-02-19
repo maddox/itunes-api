@@ -6,7 +6,7 @@ var morgan = require('morgan')
 var bodyParser = require('body-parser')
 var iTunes = require('local-itunes')
 var osa = require('osa')
-var osascript = require(path.join(__dirname, 'node_modules', 'local-itunes', 'node_modules', 'osascript'))
+var osascript = require('osascript')
 var airplay = require('./lib/airplay')
 var parameterize = require('parameterize');
 
