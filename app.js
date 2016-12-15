@@ -35,6 +35,8 @@ function getCurrentState(){
     currentState['playlist'] = currentPlaylist.name();
     currentState['volume'] = itunes.soundVolume();
     currentState['muted'] = itunes.mute();
+    currentState['repeat'] = itunes.songRepeat();
+    currentState['shuffle'] = itunes.shuffleEnabled() && itunes.shuffleMode();
 
     if (currentTrack.year()) {
       currentState['album'] += " (" + currentTrack.year() + ")";
@@ -92,6 +94,39 @@ function setMuted(muted){
     return true;
   }else{
     return false;
+  }
+}
+
+function setShuffle(mode){
+  itunes = Application('iTunes');
+
+  if (!mode) {
+    mode = "songs"
+  }
+
+  if (mode == "false" || mode == "off") {
+    itunes.shuffleEnabled = false;
+    return false;
+  }else{
+    itunes.shuffleEnabled = true;
+    itunes.shuffleMode = mode;
+    return true;
+  }
+}
+
+function setRepeat(mode){
+  itunes = Application('iTunes');
+
+  if (!mode) {
+    mode = "all"
+  }
+
+  if (mode == "false" || mode == "off") {
+    itunes.songRepeat = false;
+    return false;
+  }else{
+    itunes.songRepeat = mode;
+    return true;
   }
 }
 
@@ -195,6 +230,27 @@ app.put('/mute', function(req, res){
   })
 })
 
+app.put('/shuffle', function(req, res){
+  osa(setShuffle, req.body.mode, function(error, data, log){
+    if (error){
+      console.log(error)
+      res.sendStatus(500)
+    }else{
+      sendResponse(error, res)
+    }
+  })
+})
+
+app.put('/repeat', function(req, res){
+  osa(setRepeat, req.body.mode, function(error, data, log){
+    if (error){
+      console.log(error)
+      res.sendStatus(500)
+    }else{
+      sendResponse(error, res)
+    }
+  })
+})
 
 app.get('/now_playing', function(req, res){
   error = null
