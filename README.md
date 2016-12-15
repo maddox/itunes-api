@@ -75,7 +75,9 @@ and what is playing.
   "name": "Forever",
   "artist": "HAIM",
   "album": "Days Are Gone (2013)",
-  "playlist": "Summer Jams"
+  "playlist": "Summer Jams",
+  "shuffle": "songs",
+  "repeat": "all"
 }
 ```
 
@@ -133,6 +135,10 @@ These are the endpoints you can hit to do things.
     PUT /pause => NowPlayingResource
     PUT /volume [level=20] => NowPlayingResource
     PUT /volume [muted=true] => NowPlayingResource
+    PUT /shuffle [mode=songs] => NowPlayingResource
+    PUT /shuffle [mode=off] => NowPlayingResource
+    PUT /repeat [mode=all] => NowPlayingResource
+    PUT /repeat [mode=off] => NowPlayingResource
 
 
 #### Playlists
